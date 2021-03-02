@@ -102,6 +102,7 @@ function setup() {
       score2: 0
     })
     database.ref("players").remove();
+    window.location.reload();
   })
   
   fruitGroup = new Group();
@@ -176,9 +177,6 @@ if(inputVal !== "") {
     })
   }
 
-  database.ref("/").update({
-    gameState: gs
-  })
 
   for(let i = 0; i < fruitGroup.length; i++)
   {
@@ -218,6 +216,19 @@ if(inputVal !== "") {
     
   }
 
+  if((score1 >= 10 || score2 >=10 ) && gs === 1) {
+    gs = 2; 
+  }
+
+  if(gs === 2) {
+    fruitGroup.setVelocityYEach(0);
+    text("Game Over",width/2,height/2);
+  }
+
+  database.ref("/").update({
+    gameState: gs
+  })
+
   posUpdate();
 }
 
@@ -232,7 +243,7 @@ function posUpdate(){
 }
 
 function spawnFruits() {
-  if(frameCount%20===0){
+  if(frameCount%20===0 && gs === 1){
     fruits = createSprite(x,0,100,100);
     fruits.velocityY = 6;
 
