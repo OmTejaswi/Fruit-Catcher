@@ -77,6 +77,10 @@ function setup() {
       x = data.val();
     })
 
+    database.ref("random").on("value",function(data){
+      rand = data.val();
+    })
+
     database.ref("players/player1/name").on("value", function(data){
       p1 = data.val();
     })
