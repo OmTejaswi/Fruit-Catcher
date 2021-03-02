@@ -97,8 +97,11 @@ function setup() {
   resetBtn.mousePressed(function(){
     database.ref("/").update({
       playerCount: 0,
-      gameState: 0
+      gameState: 0,
+      score1: 0,
+      score2: 0
     })
+    database.ref("players").remove();
   })
   
   fruitGroup = new Group();
