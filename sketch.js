@@ -226,6 +226,7 @@ if(inputVal !== "") {
 
   if(gs === 2) {
     fruitGroup.setVelocityYEach(0);
+    fruitGroup.destroyEach();
     text("Game Over",width/2,height/2);
   }
 
