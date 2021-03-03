@@ -249,7 +249,7 @@ function posUpdate(){
 
 function spawnFruits() {
   if(frameCount%20===0 && gs === 1){
-    fruits = createSprite(x,0,100,100);
+    fruits = createSprite(x,-30,100,100);
     fruits.velocityY = 6;
 
     rand = Math.round(random(1,5));
